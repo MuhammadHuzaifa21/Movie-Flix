@@ -5,7 +5,7 @@ import { getMovieById, getPosterUrl } from "../api/tmdb";
 function MovieDetails() {
   // STATE
   const { id } = useParams();
-  const [movie, setMovie] = useState([]);
+  const [movie, setMovie] = useState(null);
 
   // LOGIC
   useEffect(() => {
@@ -41,11 +41,11 @@ function MovieDetails() {
             <img
               src={getPosterUrl(movie.poster_path)}
               alt={movie.title}
-              className="img-fluid rounder shadow-sm" />
+              className="img-fluid rounded shadow-sm" />
           </div>
 
           <div className="col-12 col-md-8">
-            <h1>{movie.title}</h1>
+            <h1>{movie.title}  ({movie.release_date.slice(0, 4)})</h1>
             {movie.tagline && (
               <p className="text-muted fst-italic">{movie.tagline}</p>
             )}
@@ -62,10 +62,7 @@ function MovieDetails() {
 
             <p>
               ⭐ <strong>{movie.vote_average.toFixed(1)}</strong> / 10
-              {' . '}
-              {movie.runtime} min
-              {' . '}
-              {movie.release_date.slice(0, 4)}
+              {' - ('}{movie.runtime} min{')'} 
             </p>
 
             <p className="lead">{movie.overview}</p>

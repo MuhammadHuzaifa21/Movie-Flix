@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const apiKey = import.meta.env.VITE_TMDB_API_KEY
-const BASE_URL = 'https://api.themoviedb.ord/3'
-const IMAGE_BASE = 'https://image.tmdc.ord/t/p'
+const BASE_URL = 'https://api.themoviedb.org/3'
+const IMAGE_BASE = 'https://image.tmdb.org/t/p'
 
 // Create a resuable axios instance with base config
 const tmdb = axios.create({
@@ -29,5 +29,5 @@ export function getPosterUrl(path, size = 'w500') {
 
 export function getBackdropUrl(path, size = 'original') {
     if (!path) return null
-    return `${BASE_URL}/${size}/${path}`
+    return `${IMAGE_BASE}/${size}${path}`
 }

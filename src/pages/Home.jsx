@@ -3,6 +3,7 @@ import Hero from '../components/Hero'
 import axios from 'axios';
 import MovieCard from '../components/MovieCard';
 import { getPopularMovies } from '../api/tmdb'
+import { Link } from 'react-router-dom';
 
 function Home() {
     // STATES
@@ -39,7 +40,9 @@ function Home() {
                         ? <p>No Movie Found.</p>
                         : movies.map((movie) => (
                             <div key={movie.id} className='col-12 col-sm-6 col-lg-4'>
-                                <MovieCard movie={movie} />
+                                <Link to={`/movie/${movie.id}`} className='text-decoration-none text-dark'>
+                                    <MovieCard movie={movie} />
+                                </Link>
                             </div>
                         ))
                     }
