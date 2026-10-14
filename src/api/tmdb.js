@@ -21,6 +21,11 @@ export async function getMovieById(id) {
     return response.data
 }
 
+export async function getGenres() {
+    const response = await tmdb.get('/genre/movie/list')
+    return response.data.genres
+}
+
 // --- Image URL Helper ---
 export function getPosterUrl(path, size = 'w500') {
     if (!path) return 'https://placehold.co/500x750/1a1a2e/ffffff?text=No+Poster'

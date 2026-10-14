@@ -10,16 +10,17 @@ function Home() {
     const [movies, setMovies] = useState([]);
 
     // LOGIC
-    const fetchMovies = async () => {
-        try {
-            const results = await getPopularMovies()
-            setMovies(results)
-        } catch (error) {
-            console.log('Error fetching movies:', error)
+    useEffect(() => {
+        async function fetchMovies() {
+            try {
+                const results = await getPopularMovies()
+                setMovies(results)
+            } catch (error) {
+                console.log('Error fetching movies:', error)
+            }
         }
-    }
-
-    useEffect(() => { fetchMovies() }, []); // on page load it will fetch movies    
+        fetchMovies()
+    }, [])
 
     // UI
     return (
